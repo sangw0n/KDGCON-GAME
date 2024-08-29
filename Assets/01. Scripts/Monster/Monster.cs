@@ -35,10 +35,10 @@ public class Monster : MonoBehaviour
     public  float currentHp = default;
     private float currentTime = default;
 
-    private MonsterState monsterState = default;
+    public MonsterState monsterState = default;
     
     
-   protected private Rigidbody2D rb = default;
+   protected Rigidbody2D rb = default;
 
 
     protected Vector2 dir = default;
@@ -92,7 +92,6 @@ public class Monster : MonoBehaviour
             if ((targetTransform.position - transform.position).magnitude <= stopDistnace)
             {
                 monsterState = MonsterState.Idle;
-                Flip();
                 Attack();
             }
             else if ((targetTransform.position - transform.position).magnitude <= attackDistance)
@@ -121,12 +120,6 @@ public class Monster : MonoBehaviour
                     break;
                 }
         }
-    }
-
-    private void Flip()
-    {
-        if (targetTransform.position.x >= transform.position.x) transform.localRotation = Quaternion.Euler(0, 0, 0);
-        else transform.localRotation = Quaternion.Euler(0, 180, 0);
     }
 
     protected void Attack()

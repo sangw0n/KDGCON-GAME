@@ -1945,8 +1945,8 @@ MonoBehaviour:
   exp: {fileID: 7628769522998076409, guid: 8b10ad413fa18cd4e9f879f2d68ada6d, type: 3}
   dieVolume: {fileID: 2114932210}
   currentHp: 0
-  dashDistance: 0.6
-  dashSpeed: 20
+  dashDistance: 0.2
+  dashSpeed: 10
 --- !u!70 &931605992
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
