@@ -12,26 +12,25 @@ public class Monster : MonoBehaviour
 {
     [Header("Monster Info")]
     [SerializeField] protected float moveSpeed = default;
-    [SerializeField] private float damage = default;
-    [SerializeField] private float attackCoolTime = default;
-    [SerializeField] private float attackDistance = default;
-    [SerializeField] private float stopDistnace = default;
-    [SerializeField] private float maxHp = default;
-    [SerializeField] private float checkDistance = default;
+    [SerializeField] protected MonsterData monsterData = default;
     [SerializeField] private LayerMask checkLayer = default;
-    [SerializeField] protected MonsterState monsterState = default;
 
     protected Action monsterAction = default;
-
+    
+    private float damage = default;
+    private float attackCoolTime = default;
+    private float attackDistance = default;
+    private float stopDistnace = default;
+    private float maxHp = default;
+    private float checkDistance = default;
     private float currentHp = default;
+    private float currentTime = default;
 
+    private MonsterState monsterState = default;
+    
     private Transform targetTransform = default;
-
     private Rigidbody2D rb = default;
 
-    private bool isCheck = default;
-
-    private float currentTime = default;
 
     private Vector2 dir = default;
 
@@ -43,6 +42,7 @@ public class Monster : MonoBehaviour
     private void Start()
     {
         monsterState = MonsterState.Idle;
+        DataInitialization();
     }
 
     private void Update()
@@ -56,10 +56,14 @@ public class Monster : MonoBehaviour
         rb.velocity = dir * moveSpeed;
     }
 
-    private void Flip()
+    private void DataInitialization()
     {
-        if (targetTransform.position.x <= transform.position.x) transform.localRotation = Quaternion.Euler(0, 0, 0);
-        else transform.localRotation = Quaternion.Euler(0, 180, 0);
+        damage = monsterData.Damage;
+        attackCoolTime = monsterData.AttackCooolTime;
+        attackDistance = monsterData.AttackDistance;
+        stopDistnace = monsterData.StopDistnace;
+        maxHp = monsterData.MaxHp;
+        checkDistance = monsterData.CheckDistance;
     }
 
     private void SetState()
@@ -73,6 +77,7 @@ public class Monster : MonoBehaviour
             if ((targetTransform.position - transform.position).magnitude <= stopDistnace)
             {
                 monsterState = MonsterState.Idle;
+                Flip();
                 Attack();
             }
             else if ((targetTransform.position - transform.position).magnitude <= attackDistance)
@@ -103,6 +108,12 @@ public class Monster : MonoBehaviour
         }
     }
 
+    private void Flip()
+    {
+        if (targetTransform.position.x <= transform.position.x) transform.localRotation = Quaternion.Euler(0, 0, 0);
+        else transform.localRotation = Quaternion.Euler(0, 180, 0);
+    }
+
     protected void Attack()
     {
         currentTime += Time.deltaTime;
@@ -117,7 +128,6 @@ public class Monster : MonoBehaviour
     protected virtual void Chase()
     {
         dir = ((Vector2)targetTransform.position - (Vector2)transform.position).normalized;
-        Flip();
     }
 
     protected virtual void Idle()
