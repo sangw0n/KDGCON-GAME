@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 57752576}
   - component: {fileID: 57752578}
   - component: {fileID: 57752577}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -404,6 +404,7 @@ GameObject:
   - component: {fileID: 79767590}
   - component: {fileID: 79767588}
   - component: {fileID: 79767592}
+  - component: {fileID: 79767593}
   m_Layer: 0
   m_Name: Methane
   m_TagString: Untagged
@@ -431,7 +432,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &79767590
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -492,12 +493,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 79767587}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.390001, y: 0, z: 0}
+  m_LocalPosition: {x: 13.639999, y: -11.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &79767592
 CapsuleCollider2D:
@@ -515,6 +516,24 @@ CapsuleCollider2D:
   m_Offset: {x: -0.63, y: 0}
   m_Size: {x: 2.62, y: 4.85}
   m_Direction: 0
+--- !u!114 &79767593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79767587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c2d0d12930d25e4faa41176977d23d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+  monsterData: {fileID: 11400000, guid: 775f2c628e532e4459c87fe7bfcde57a, type: 2}
+  checkLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  bulletObject: {fileID: 4094004216159811162, guid: 78d7f556de4ca5b4f82025f4f216f59a, type: 3}
 --- !u!1 &172659876
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,7 +939,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &1053040346
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -981,13 +1000,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1053040343}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.7, y: -7.34, z: 0}
+  m_LocalPosition: {x: 18.29, y: -8.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 172659877}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &1053040348
 CapsuleCollider2D:
@@ -1021,7 +1040,7 @@ MonoBehaviour:
   monsterData: {fileID: 11400000, guid: d250fd81065761f47b083214a4467234, type: 2}
   checkLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
   dashDistance: 0.6
   dashSpeed: 10
 --- !u!1 &1642971406
@@ -1064,7 +1083,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &1642971409
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1125,12 +1144,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1642971406}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.43, y: 0, z: 0}
+  m_LocalPosition: {x: 23.88, y: -6.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &1642971411
 CapsuleCollider2D:
@@ -1160,11 +1179,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3873ac30e8c0c5408c267e46ff76c37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
+  moveSpeed: 2
   monsterData: {fileID: 11400000, guid: 6ea79696d6f302f4d95a15df3d948e04, type: 2}
   checkLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
   bulletObject: {fileID: 4094004216159811162, guid: e74ad7b7bb646cf428f1b04d3e119cf3, type: 3}
 --- !u!1 &1938348974
 GameObject:
@@ -1176,9 +1195,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1938348976}
   - component: {fileID: 1938348975}
-  - component: {fileID: 1938348977}
   - component: {fileID: 1938348978}
   - component: {fileID: 1938348979}
+  - component: {fileID: 1938348977}
   m_Layer: 0
   m_Name: ChainSaw
   m_TagString: Untagged
@@ -1246,7 +1265,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1938348974}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.43, y: 0, z: 0}
+  m_LocalPosition: {x: -22.87, y: 0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1265,13 +1284,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e0d52b267c88149bb68e45ca3ea012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
+  moveSpeed: 2
   monsterData: {fileID: 11400000, guid: 037d9ee437fb55d4aa8f79e0e214008a, type: 2}
   checkLayer:
     serializedVersion: 2
-    m_Bits: 64
-  dashDistance: 0
-  dashSpeed: 0
+    m_Bits: 128
+  dashDistance: 0.6
+  dashSpeed: 10
 --- !u!50 &1938348978
 Rigidbody2D:
   serializedVersion: 4

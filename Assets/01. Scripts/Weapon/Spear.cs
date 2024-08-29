@@ -13,6 +13,9 @@ public class Spear : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        plastic.OnChildColliderEnter(collision);
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            plastic.OnChildColliderEnter(collision);
+        }
     }
 }
