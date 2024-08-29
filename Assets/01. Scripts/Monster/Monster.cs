@@ -16,7 +16,8 @@ public class Monster : MonoBehaviour
     [SerializeField] private LayerMask checkLayer = default;
 
     protected Action monsterAction = default;
-    
+    protected Transform targetTransform = default;
+
     private float damage = default;
     private float attackCoolTime = default;
     private float attackDistance = default;
@@ -28,7 +29,7 @@ public class Monster : MonoBehaviour
 
     private MonsterState monsterState = default;
     
-    private Transform targetTransform = default;
+    
     private Rigidbody2D rb = default;
 
 
@@ -39,13 +40,14 @@ public class Monster : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Start()
+    protected virtual void Start()
     {
-        monsterState = MonsterState.Idle;
         DataInitialization();
+
+        monsterState = MonsterState.Idle;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         CheckState();
         SetState();
@@ -58,6 +60,8 @@ public class Monster : MonoBehaviour
 
     private void DataInitialization()
     {
+        Debug.Log("초기화 실행");
+
         damage = monsterData.Damage;
         attackCoolTime = monsterData.AttackCooolTime;
         attackDistance = monsterData.AttackDistance;
@@ -136,7 +140,7 @@ public class Monster : MonoBehaviour
         Debug.Log("멈춰");
     }
 
-    protected virtual void TakeDamage(float damge)
+    public virtual void TakeDamage(float damge)
     {
         currentHp -= damge;
         Debug.Log("공격받음");
