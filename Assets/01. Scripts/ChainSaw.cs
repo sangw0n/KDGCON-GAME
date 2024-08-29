@@ -8,14 +8,10 @@ public class ChainSaw : Monster
     {
         monsterAction += AttackAction;
     }
-
-
-
     private void AttackAction()
     {
         StartCoroutine(Co_Dash());
     }
-
     protected IEnumerator Co_Dash()
     {
         moveSpeed = 10;
