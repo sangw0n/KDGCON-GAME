@@ -39,10 +39,11 @@ public class Monster : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Start()
+    protected virtual void Start()
     {
-        monsterState = MonsterState.Idle;
         DataInitialization();
+
+        monsterState = MonsterState.Idle;
     }
 
     private void Update()
@@ -58,6 +59,8 @@ public class Monster : MonoBehaviour
 
     private void DataInitialization()
     {
+        Debug.Log("초기화 실행");
+
         damage = monsterData.Damage;
         attackCoolTime = monsterData.AttackCooolTime;
         attackDistance = monsterData.AttackDistance;
@@ -136,7 +139,7 @@ public class Monster : MonoBehaviour
         Debug.Log("멈춰");
     }
 
-    protected virtual void TakeDamage(float damge)
+    public virtual void TakeDamage(float damge)
     {
         currentHp -= damge;
         Debug.Log("공격받음");
