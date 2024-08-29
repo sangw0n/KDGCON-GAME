@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 2
   attackCoolTime: 1
-  attackDistance: 5
+  attackDistance: 3
   stopDistnace: 1
-  maxHp: 0
-  checkDistance: 10
+  maxHp: 100
+  checkDistance: 5

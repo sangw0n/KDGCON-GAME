@@ -30,11 +30,11 @@ public class ChainSaw : Monster
         moveSpeed = originSpeed;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            collision.gameObject.GetComponent<TestJWSPlayer>().TakeDamge(monsterData.Damage);
+            collision.gameObject.GetComponent<Player>().TakeDamage(monsterData.Damage);
         }
     }
 }

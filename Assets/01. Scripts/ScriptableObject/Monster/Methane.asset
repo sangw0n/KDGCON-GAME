@@ -16,5 +16,5 @@ MonoBehaviour:
   attackCoolTime: 1
   attackDistance: 5
   stopDistnace: 1
-  maxHp: 0
+  maxHp: 100
   checkDistance: 10

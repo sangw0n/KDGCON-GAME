@@ -128,7 +128,7 @@ public class Player : MonoBehaviour
                 bool isCritical = Random.value < playerStats.criticalChance; // 크리티컬 확률 계산
                 int damage = isCritical ? Mathf.RoundToInt(playerStats.attackPower * playerStats.criticalMultiplier) : playerStats.attackPower;
 
-                collider.GetComponent<TemporaryEnemy>().TakeDamage(damage);
+                collider.GetComponent<Monster>().TakeDamage(damage);
 
                 // 랜덤한 x와 y 위치를 생성
                 float randomX = Random.Range(-0.4f, 0.4f);
@@ -145,7 +145,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         curHp -= damage;
     }
