@@ -8,6 +8,7 @@ public class Plastic : Monster
     [Header("Plastic Monster Info")]
     [SerializeField] private float dashDistance = default;
     [SerializeField] private float dashSpeed = default;
+    [SerializeField] private float monsterScale = default;
 
     private float originSpeed = default;
 
@@ -18,6 +19,24 @@ public class Plastic : Monster
         originSpeed = moveSpeed;
 
         monsterAction += AttackAction;
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        Flip();
+    }
+
+    private void Flip()
+    {
+        if (targetTransform.position.x >= transform.position.x)
+        {
+            transform.localScale = new Vector3(-monsterScale, monsterScale, monsterScale);
+        }
+        else
+        {
+            transform.localScale = new Vector3(monsterScale, monsterScale, monsterScale);
+        }
     }
 
     private void AttackAction()

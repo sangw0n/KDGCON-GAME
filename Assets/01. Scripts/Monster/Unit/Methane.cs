@@ -7,6 +7,7 @@ public class Methane : Monster
 {
     [Header("Methane Monster Info")]
     [SerializeField] private GameObject bulletObject = null;
+    [SerializeField] private float monsterScale = default;
 
     
 
@@ -15,6 +16,25 @@ public class Methane : Monster
         base.Start();
 
         monsterAction += AttackAction;
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        Flip();
+    }
+
+    private void Flip()
+    {
+        if (targetTransform.position.x >= transform.position.x)
+        {
+            transform.localScale = new Vector3(-monsterScale, monsterScale, monsterScale);
+        }
+        else
+        {
+            transform.localScale = new Vector3(monsterScale, monsterScale, monsterScale);
+        }
     }
 
     private void AttackAction()

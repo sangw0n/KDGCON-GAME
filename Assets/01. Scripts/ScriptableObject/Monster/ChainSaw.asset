@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ChainSaw
   m_EditorClassIdentifier: 
   damage: 2
-  attackCoolTime: 1
-  attackDistance: 3
+  attackCoolTime: 2
+  attackDistance: 20
   stopDistnace: 1
   maxHp: 100
-  checkDistance: 5
+  checkDistance: 50
