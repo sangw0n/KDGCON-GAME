@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private GameObject damageText;
     [SerializeField] private GameObject criticalDamageText;
+    [SerializeField] private GameObject bubbleptc;
+    [SerializeField] private GameObject hitptc;
 
 
     [SerializeField] Slider hpBar;
@@ -27,6 +29,8 @@ public class Player : MonoBehaviour
     private Animator anim;
     private PlayerStats playerStats;
     private SpriteRenderer sr;
+
+    private bool isAttack1Active = true;
 
     private void Awake()
     {
@@ -103,8 +107,19 @@ public class Player : MonoBehaviour
         {
 
             if (Input.GetMouseButtonDown(0))
-            {
-                anim.SetTrigger("isAttack1");
+            { // 현재 활성화된 공격 애니메이션에 따라 트리거를 설정
+                if (isAttack1Active)
+                {
+                    anim.SetTrigger("isAttack1");
+                }
+                else
+                {
+                    anim.SetTrigger("isAttack2");
+                }
+
+                // 다음 번에 호출될 때 다른 애니메이션을 활성화하도록 설정
+                isAttack1Active = !isAttack1Active;
+
                 attackCurTime = attackCoolTime;
                 AudioManager.instance.PlaySound(transform.position, 0, Random.Range(1f, 1.6f), 0.6f);
 
@@ -141,6 +156,9 @@ public class Player : MonoBehaviour
                 GameObject textPrefab = isCritical ? criticalDamageText : damageText;
                 var damageTextob = Instantiate(textPrefab, randomPosition, Quaternion.identity).GetComponent<TMP_Text>();
                 damageTextob.text = damage.ToString();
+
+                Instantiate(bubbleptc, collider.transform.position, Quaternion.identity);
+                Instantiate(hitptc, collider.transform.position, Quaternion.identity);
             }
         }
     }
