@@ -106,6 +106,7 @@ public class Player : MonoBehaviour
             {
                 anim.SetTrigger("isAttack1");
                 attackCurTime = attackCoolTime;
+                AudioManager.instance.PlaySound(transform.position, 0, Random.Range(1f, 1.6f), 0.6f);
 
             }
         }

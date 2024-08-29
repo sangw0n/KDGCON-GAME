@@ -39,6 +39,8 @@ public class TemporaryEnemy : MonoBehaviour
         curHp -= damage;
         CameraShake.instance.Shake(0.16f, 0.07f);
         StartCoroutine(HitMaterialCor());
+        AudioManager.instance.PlaySound(transform.position, 1, Random.Range(1f, 1.4f), 0.6f);
+
     }
 
     IEnumerator HitMaterialCor()
