@@ -610,6 +610,8 @@ MonoBehaviour:
   attackCoolTime: 0.3
   damageText: {fileID: 1856735718635509643, guid: e7bf904097aa3f342a084e75e7f64ea6, type: 3}
   criticalDamageText: {fileID: 1856735718635509643, guid: 66cf83e57037eb94d8c9e6df5b91ecb1, type: 3}
+  bubbleptc: {fileID: 176530, guid: caf388c7338cc0c4b9187283f10a304a, type: 3}
+  hitptc: {fileID: 185968, guid: 6fd69a2ba9c355345bcebde69a316e40, type: 3}
   hpBar: {fileID: 231751237}
 --- !u!95 &101947417
 Animator:
