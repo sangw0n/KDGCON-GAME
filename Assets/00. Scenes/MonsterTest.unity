@@ -1036,6 +1036,7 @@ GameObject:
   - component: {fileID: 1642971409}
   - component: {fileID: 1642971407}
   - component: {fileID: 1642971411}
+  - component: {fileID: 1642971412}
   m_Layer: 0
   m_Name: Oil
   m_TagString: Untagged
@@ -1147,6 +1148,24 @@ CapsuleCollider2D:
   m_Offset: {x: -0.63, y: 0}
   m_Size: {x: 2.62, y: 4.85}
   m_Direction: 0
+--- !u!114 &1642971412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642971406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3873ac30e8c0c5408c267e46ff76c37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0
+  monsterData: {fileID: 11400000, guid: 6ea79696d6f302f4d95a15df3d948e04, type: 2}
+  checkLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  bulletObject: {fileID: 4094004216159811162, guid: e74ad7b7bb646cf428f1b04d3e119cf3, type: 3}
 --- !u!1 &1938348974
 GameObject:
   m_ObjectHideFlags: 0
@@ -1252,6 +1271,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   dashDistance: 0
+  dashSpeed: 0
 --- !u!50 &1938348978
 Rigidbody2D:
   serializedVersion: 4

@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3814fa9bb5e0f93458ed0cb7b8d55e0e, type: 3}
   m_Name: Oil
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  damage: 0
-  attackCoolTime: 0
-  attackDistance: 0
-  stopDistnace: 0
+  damage: 2
+  attackCoolTime: 1
+  attackDistance: 10
+  stopDistnace: 5
   maxHp: 0
-  checkDistance: 0
+  checkDistance: 10

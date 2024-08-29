@@ -16,7 +16,8 @@ public class Monster : MonoBehaviour
     [SerializeField] private LayerMask checkLayer = default;
 
     protected Action monsterAction = default;
-    
+    protected Transform targetTransform = default;
+
     private float damage = default;
     private float attackCoolTime = default;
     private float attackDistance = default;
@@ -28,7 +29,7 @@ public class Monster : MonoBehaviour
 
     private MonsterState monsterState = default;
     
-    private Transform targetTransform = default;
+    
     private Rigidbody2D rb = default;
 
 
@@ -46,7 +47,7 @@ public class Monster : MonoBehaviour
         monsterState = MonsterState.Idle;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         CheckState();
         SetState();
