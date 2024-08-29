@@ -12,14 +12,8 @@ public class TemperatureManager : MonoBehaviour
     public static TemperatureManager Instance { get; private set; }
 
     [SerializeField]
-    private float maxEarthTemperature;
-    [SerializeField]
     private float earthTemperature;     // 지구 온도 
 
-    [SerializeField]
-    private Slider temperatureSlider;
-    [SerializeField]
-    private TMP_Text temperatureText;
     public float EarthTemperature { get => earthTemperature; }
 
     private void Awake()
@@ -35,13 +29,8 @@ public class TemperatureManager : MonoBehaviour
         }
 
         earthTemperature = Constants.ExtremeDangerTemperature;
-        earthTemperature = maxEarthTemperature;
     }
-    private void Update()
-    {
-        temperatureSlider.value = Mathf.Lerp(temperatureSlider.value, earthTemperature / maxEarthTemperature, Time.deltaTime * 40f);
-        temperatureText.text = earthTemperature.ToString();
-    }
+
     public void DecreaseEarthTemperature(float value)
     {
         earthTemperature -= value;

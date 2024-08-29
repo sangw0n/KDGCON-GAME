@@ -6,5 +6,4 @@ public static class Constants
     public const int ModerateRiskTemperature  = 40;  // 중위험 온도
     public const int LowLiskTemperature       = 20;  // 저위험 온도
     public const int safeTemperature          = 0;   // 안전 온도 
-
 }

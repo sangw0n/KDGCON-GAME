@@ -10,11 +10,6 @@ using DG.Tweening;
 
 public class ScreenTouch : MonoBehaviour
 {
-    [SerializeField]
-    private LayerMask screenLayer;
-    [SerializeField]
-    private LayerMask offScreenLayer;
-
     [Header("Zoom Settings")]
     [SerializeField]
     private float       zoomViewSize;
@@ -32,6 +27,8 @@ public class ScreenTouch : MonoBehaviour
         defaultCameraPosition = Camera.main.transform.position;
         defaultCameraViewSize = Camera.main.orthographicSize;
 
+        Debug.Log(defaultCameraViewSize);
+
         isZooming             = false;
         isZoomIn              = false;
     }
@@ -40,22 +37,22 @@ public class ScreenTouch : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray          = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+            Ray ray              = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D hit     = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
 
-            if (!isZooming && (hit.collider == null || hit.transform.CompareTag("Finish")))
-            {
-                isZooming = true;
-                isZoomIn = !isZoomIn;
-
-                ZoomOutScreen();
-            }
-            else if (!isZooming && hit.transform.CompareTag("Screen"))
+            if (!isZooming && !isZoomIn && hit.collider.CompareTag("Screen"))
             {
                 isZooming = true;
                 isZoomIn = !isZoomIn;
 
                 ZoomInScreen(hit.transform);
+            }
+            else if (!isZooming && isZoomIn && (hit.collider == null || hit.collider.CompareTag("Finish")))
+            {
+                isZooming = true;
+                isZoomIn = !isZoomIn;
+
+                ZoomOutScreen();
             }
         }
     }
