@@ -13,11 +13,15 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform pos;
     [SerializeField] private Vector2 boxSize;
     [SerializeField] float curHp;
-    
+    [SerializeField] float attackCoolTime; // 공격 쿨타임
+    float attackCurTime;
+
 
 
     [SerializeField] private GameObject damageText;
     [SerializeField] private GameObject criticalDamageText;
+    [SerializeField] private GameObject bubbleptc;
+    [SerializeField] private GameObject hitptc;
 
 
     [SerializeField] Slider hpBar;
@@ -25,6 +29,8 @@ public class Player : MonoBehaviour
     private Animator anim;
     private PlayerStats playerStats;
     private SpriteRenderer sr;
+
+    private bool isAttack1Active = true;
 
     private void Awake()
     {
@@ -97,10 +103,33 @@ public class Player : MonoBehaviour
 
     void Attack()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (attackCurTime <= 0)
         {
-            anim.SetTrigger("isAttack1");
+
+            if (Input.GetMouseButtonDown(0))
+            { // 현재 활성화된 공격 애니메이션에 따라 트리거를 설정
+                if (isAttack1Active)
+                {
+                    anim.SetTrigger("isAttack1");
+                }
+                else
+                {
+                    anim.SetTrigger("isAttack2");
+                }
+
+                // 다음 번에 호출될 때 다른 애니메이션을 활성화하도록 설정
+                isAttack1Active = !isAttack1Active;
+
+                attackCurTime = attackCoolTime;
+                AudioManager.instance.PlaySound(transform.position, 0, Random.Range(1f, 1.6f), 0.6f);
+
+            }
         }
+        else
+        {
+            attackCurTime -= Time.deltaTime;
+        }
+
     }
 
     public void Damage()
@@ -114,7 +143,7 @@ public class Player : MonoBehaviour
                 bool isCritical = Random.value < playerStats.criticalChance; // 크리티컬 확률 계산
                 int damage = isCritical ? Mathf.RoundToInt(playerStats.attackPower * playerStats.criticalMultiplier) : playerStats.attackPower;
 
-                collider.GetComponent<TemporaryEnemy>().TakeDamage(damage);
+                collider.GetComponent<Monster>().TakeDamage(damage);
 
                 // 랜덤한 x와 y 위치를 생성
                 float randomX = Random.Range(-0.4f, 0.4f);
@@ -127,11 +156,14 @@ public class Player : MonoBehaviour
                 GameObject textPrefab = isCritical ? criticalDamageText : damageText;
                 var damageTextob = Instantiate(textPrefab, randomPosition, Quaternion.identity).GetComponent<TMP_Text>();
                 damageTextob.text = damage.ToString();
+
+                Instantiate(bubbleptc, collider.transform.position, Quaternion.identity);
+                Instantiate(hitptc, collider.transform.position, Quaternion.identity);
             }
         }
     }
 
-    void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         curHp -= damage;
     }

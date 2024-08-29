@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class TemporaryEnemy : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class TemporaryEnemy : MonoBehaviour
     [SerializeField] private Material hitMaterial;     // 잘못된 변수명 수정
 
     [SerializeField] private GameObject exp;
+    [SerializeField] private GameObject dieVolume;
 
     private bool isDead = false; // 적이 죽었는지 여부를 체크하는 플래그
 
@@ -37,6 +39,8 @@ public class TemporaryEnemy : MonoBehaviour
         curHp -= damage;
         CameraShake.instance.Shake(0.16f, 0.07f);
         StartCoroutine(HitMaterialCor());
+        AudioManager.instance.PlaySound(transform.position, 1, Random.Range(1f, 1.4f), 0.6f);
+
     }
 
     IEnumerator HitMaterialCor()
@@ -58,9 +62,11 @@ public class TemporaryEnemy : MonoBehaviour
     }
     IEnumerator TimeStop()
     {
+        dieVolume.SetActive(true);
         Time.timeScale = 0.1f;
-        yield return new WaitForSecondsRealtime(0.3f);
+        yield return new WaitForSecondsRealtime(0.2f);
         Time.timeScale = 1;
+        dieVolume.SetActive(false);
 
     }
     void Die()

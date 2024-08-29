@@ -33,6 +33,6 @@ public class Plastic : Monster
 
     public void OnChildColliderEnter(Collider2D collider)
     {
-        collider.GetComponent<TestJWSPlayer>().TakeDamge(monsterData.Damage);
+        collider.GetComponent<Player>().TakeDamage(monsterData.Damage);
     }
 }
