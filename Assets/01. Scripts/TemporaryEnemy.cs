@@ -27,11 +27,7 @@ public class TemporaryEnemy : MonoBehaviour
 
     void Update()
     {
-        if (curHp <= 0 && !isDead)
-        {
-            isDead = true;  // 적이 죽었음을 표시
-            StartCoroutine(Exp());
-        }
+        Die();
     }
 
     public void TakeDamage(float damage)
@@ -59,5 +55,21 @@ public class TemporaryEnemy : MonoBehaviour
         }
 
         Destroy(gameObject);  // 적 오브젝트 제거
+    }
+    IEnumerator TimeStop()
+    {
+        Time.timeScale = 0.1f;
+        yield return new WaitForSecondsRealtime(0.3f);
+        Time.timeScale = 1;
+
+    }
+    void Die()
+    {
+        if (curHp <= 0 && !isDead)
+        {
+            isDead = true;  // 적이 죽었음을 표시
+            StartCoroutine(Exp());
+            StartCoroutine(TimeStop());
+        }
     }
 }

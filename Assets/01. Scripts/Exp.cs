@@ -119,6 +119,8 @@ public class Exp : MonoBehaviour
         if (collision.gameObject.CompareTag("Temperature"))
         {
             Destroy(gameObject);
+
+            TemperatureManager.Instance.DecreaseEarthTemperature(1);
           //  Destroy(Instantiate(ExpEffect, transform.position, Quaternion.identity), 2f);
 
         }
