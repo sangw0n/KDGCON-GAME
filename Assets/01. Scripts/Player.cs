@@ -13,7 +13,9 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform pos;
     [SerializeField] private Vector2 boxSize;
     [SerializeField] float curHp;
-    
+    [SerializeField] float attackCoolTime; // 공격 쿨타임
+    float attackCurTime;
+
 
 
     [SerializeField] private GameObject damageText;
@@ -97,10 +99,21 @@ public class Player : MonoBehaviour
 
     void Attack()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (attackCurTime <= 0)
         {
-            anim.SetTrigger("isAttack1");
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                anim.SetTrigger("isAttack1");
+                attackCurTime = attackCoolTime;
+
+            }
         }
+        else
+        {
+            attackCurTime -= Time.deltaTime;
+        }
+
     }
 
     public void Damage()

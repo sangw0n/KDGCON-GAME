@@ -1,6 +1,7 @@
 // # System
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
 // # Unity
 using UnityEngine;
@@ -17,7 +18,8 @@ public class TemperatureManager : MonoBehaviour
 
     [SerializeField]
     private Slider temperatureSlider;
-
+    [SerializeField]
+    private TMP_Text temperatureText;
     public float EarthTemperature { get => earthTemperature; }
 
     private void Awake()
@@ -38,6 +40,7 @@ public class TemperatureManager : MonoBehaviour
     private void Update()
     {
         temperatureSlider.value = Mathf.Lerp(temperatureSlider.value, earthTemperature / maxEarthTemperature, Time.deltaTime * 40f);
+        temperatureText.text = earthTemperature.ToString();
     }
     public void DecreaseEarthTemperature(float value)
     {
