@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -12,19 +13,29 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform pos;
     [SerializeField] private Vector2 boxSize;
 
+    [SerializeField] private GameObject damageText;
+
     private Animator anim;
+
+    private PlayerStats playerStats;
+
+    private SpriteRenderer sr;
 
 
 
     private void Awake()
     {
-        anim = gameObject.GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+        playerStats = GetComponent<PlayerStats>();
     }
 
     private void Update()
     {
         Move();
         Attack();
+        sr.sortingOrder = Mathf.RoundToInt(transform.position.y) * -1;
+
     }
 
     void Move()
@@ -61,7 +72,19 @@ public class Player : MonoBehaviour
         {
             if (collider.tag == "Enemy")
             {
-                collider.GetComponent<TemporaryEnemy>().TakeDamage(1);
+                collider.GetComponent<TemporaryEnemy>().TakeDamage(playerStats.attackPower);
+
+                // 랜덤한 x와 y 위치를 생성
+                float randomX = Random.Range(-0.4f, 0.4f); // -1.0과 1.0 사이의 랜덤 값
+                float randomY = Random.Range(-0.4f, 0.4f); // -1.0과 1.0 사이의 랜덤 값
+
+                // 기존의 z 위치와 결합하여 랜덤한 위치를 생성
+                Vector3 randomPosition = collider.transform.position + new Vector3(randomX, randomY, -2);
+
+                // 인스턴스를 생성하고 위치를 설정
+                var damageTextob = Instantiate(damageText, randomPosition, Quaternion.identity).GetComponent<TMP_Text>();
+                damageTextob.text = playerStats.attackPower.ToString();
+
             }
         }
 
