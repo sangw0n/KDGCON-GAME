@@ -49,8 +49,8 @@ public class StageListManager : MonoBehaviour
 
         isGameStart = true;
 
-        GameObject randomButton = this.button[Random.Range(0, 3)];
-        Transform pos = spawnPos[Random.Range(0, 3)].transform;
+        GameObject randomButton = this.button[Random.Range(0, this.button.Length)];
+        Transform pos = spawnPos[Random.Range(0, this.spawnPos.Length)].transform;
 
         // 버튼을 Canvas의 자식으로 생성
         GameObject button = Instantiate(randomButton, canvas.transform, false);
@@ -91,8 +91,8 @@ public class StageListManager : MonoBehaviour
     {
         if (scene.name == "02. Battle Base")
         {
-            GameObject randomButton = this.button[Random.Range(0, 3)];
-            Transform pos = spawnPos[Random.Range(0, 3)].transform;
+            GameObject randomButton = this.button[Random.Range(0, this.button.Length)];
+            Transform pos = spawnPos[Random.Range(0, this.spawnPos.Length)].transform;
 
             // 버튼을 Canvas의 자식으로 생성
             GameObject button = Instantiate(randomButton, canvas.transform, false);
