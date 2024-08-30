@@ -65,7 +65,10 @@ public class TouchtoStart : MonoBehaviour
 
         if(Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene("MainMenu");
+            FadeInOut.instance.gameObject.SetActive(true);
+            FadeInOut.instance.StartCoroutine(FadeInOut.instance.FadeIn());
+            yield return new WaitForSeconds(1);
+            SceneManager.LoadScene("01. MainMenu");
         }
     }
 }

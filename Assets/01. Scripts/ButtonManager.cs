@@ -12,6 +12,6 @@ public class ButtonManager : MonoBehaviour
 
     public void GameStart()
     {
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene("02. Battle Base");
     }
 }
