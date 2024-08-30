@@ -12,7 +12,7 @@ public class TemperatureManager : MonoBehaviour
     public static TemperatureManager Instance { get; private set; }
 
     [SerializeField]
-    private float earthTemperature;     // 지구 온도 
+    public float earthTemperature;     // 지구 온도 
 
     public float EarthTemperature { get => earthTemperature; }
 

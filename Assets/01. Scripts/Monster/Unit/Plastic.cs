@@ -29,13 +29,19 @@ public class Plastic : Monster
 
     private void Flip()
     {
+        // Get the SpriteRenderer component attached to the same GameObject
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // Check the position of the target relative to the monster
         if (targetTransform.position.x >= transform.position.x)
         {
-            transform.localScale = new Vector3(-monsterScale, monsterScale, monsterScale);
+            // If the target is on the right, flip the sprite to face right
+            spriteRenderer.flipX = false;
         }
         else
         {
-            transform.localScale = new Vector3(monsterScale, monsterScale, monsterScale);
+            // If the target is on the left, flip the sprite to face left
+            spriteRenderer.flipX = true;
         }
     }
 
@@ -54,4 +60,7 @@ public class Plastic : Monster
     {
         collider.GetComponent<Player>().TakeDamage(monsterData.Damage);
     }
+
+
+ 
 }
