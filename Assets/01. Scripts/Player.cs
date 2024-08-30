@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject criticalDamageText;
     [SerializeField] private GameObject bubbleptc;
     [SerializeField] private GameObject hitptc;
+    [SerializeField] public GameObject oilPanel;
 
 
     [SerializeField] Slider hpBar;
