@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8403765218070447216}
   - component: {fileID: 8403765218070447219}
   m_Layer: 0
-  m_Name: Button (2)
+  m_Name: Beach2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,7 +38,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 112, y: 71}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8403765218070447180
@@ -159,7 +159,7 @@ MonoBehaviour:
   sceneName: 
   stageName: 
   isClear: 0
-  stageInfo: {fileID: 11400000, guid: bb03a680a3141ba4885f711349e19782, type: 2}
+  stageInfo: {fileID: 11400000, guid: 43e3e8c1a45dd9e4b8a1812cc9971704, type: 2}
   stageInfoUi: {fileID: 0}
   stageImage: {fileID: 0}
   stageEntryButton: {fileID: 0}
