@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PollutionAir : Monster
+public class WasteNet : Monster
 {
     [Header("PollutionAir")]
     [SerializeField] private float monsterScale = default;
@@ -23,13 +23,19 @@ public class PollutionAir : Monster
 
     private void Flip()
     {
+        // Get the SpriteRenderer component attached to the same GameObject
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // Check the position of the target relative to the monster
         if (targetTransform.position.x >= transform.position.x)
         {
-            transform.localScale = new Vector3(-monsterScale, monsterScale, monsterScale);
+            // If the target is on the right, flip the sprite to face right
+            spriteRenderer.flipX = true;
         }
         else
         {
-            transform.localScale = new Vector3(monsterScale, monsterScale, monsterScale);
+            // If the target is on the left, flip the sprite to face left
+            spriteRenderer.flipX = false;
         }
     }
 }
