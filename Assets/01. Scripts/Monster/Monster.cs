@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEngine.GraphicsBuffer;
 
 
@@ -22,6 +23,10 @@ public class Monster : MonoBehaviour
 
     [SerializeField] private GameObject exp;
     [SerializeField] private GameObject dieVolume;
+
+    [SerializeField] Slider hpBar;
+    [SerializeField] Slider hpBar2;
+
 
     protected Action monsterAction = default;
     protected Transform targetTransform = default;
@@ -62,6 +67,15 @@ public class Monster : MonoBehaviour
         CheckState();
         SetState();
         Die();
+
+
+        // 매우 빠르게 변화하는 hpBar
+        hpBar.value = Mathf.Lerp(hpBar.value, currentHp / maxHp, Time.deltaTime * 100f);
+
+        // 천천히 변화하는 hpBar2
+        hpBar2.value = Mathf.Lerp(hpBar2.value, currentHp / maxHp, Time.deltaTime * 1f);
+
+
     }
 
     private void FixedUpdate()

@@ -13,5 +13,19 @@ public class Bullet : MonoBehaviour
         transform.Translate(Vector2.right * bulletSpeed * Time.deltaTime);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            var playerScript = collision.GetComponent<Player>();
+            playerScript.oilPanel.SetActive(false);
+            playerScript.oilPanel.SetActive(true);
+
+            playerScript.TakeDamage(2);
+
+            Destroy(gameObject);
+        }
+    }
+
 
 }

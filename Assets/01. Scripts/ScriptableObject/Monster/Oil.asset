@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Oil
   m_EditorClassIdentifier: 
   damage: 2
-  attackCoolTime: 1
+  attackCoolTime: 5
   attackDistance: 5
   stopDistnace: 1
   maxHp: 100
