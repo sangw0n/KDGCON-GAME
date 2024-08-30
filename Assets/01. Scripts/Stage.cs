@@ -45,13 +45,15 @@ public class Stage : MonoBehaviour
     public string               StageName { get => stageName; }
     public bool                 IsClaer { get => isClear;  }
 
-    private void Start()
+    public void Initialize(Image stageInfoUI, Image stageImage, Button stageEntryButton, Button HideButton, TextMeshProUGUI titleText, TextMeshProUGUI explantionText)
     {
-        Initialize();
-    }
+        this.stageInfoUi = stageInfoUI;
+        this.stageImage = stageImage;
+        this.stageEntryButton = stageEntryButton;
+        this.stageInfoHideButton = HideButton;
+        this.titleText = titleText;
+        this.explanationText = explantionText;
 
-    private void Initialize()
-    {
         stageInfoButton.onClick.AddListener(() =>
             OnShowStageInfoUI());
 
