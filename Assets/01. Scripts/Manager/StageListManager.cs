@@ -41,6 +41,37 @@ public class StageListManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+    private void Start()
+    {
+        GameObject randomButton = this.button[Random.Range(0, 3)];
+        Transform pos = spawnPos[Random.Range(0, 3)].transform;
+
+        // 버튼을 Canvas의 자식으로 생성
+        GameObject button = Instantiate(randomButton, canvas.transform, false);
+
+        // 월드 좌표를 스크린 좌표로 변환
+        Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, pos.position);
+
+        // 스크린 좌표를 Canvas의 로컬 좌표로 변환
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            canvas.GetComponent<RectTransform>(),
+            screenPoint,
+            Camera.main,
+            out Vector2 localPoint
+        );
+
+        // 버튼의 RectTransform 위치 설정
+        RectTransform rectTransform = button.GetComponent<RectTransform>();
+        rectTransform.anchoredPosition = localPoint;
+        rectTransform.localScale = Vector3.one; // 스케일 초기화
+
+        // 버튼 초기화
+        button.GetComponent<Stage>().Initialize(stageInfoUi, stageImage, stageEntryButton, stageInfoHideButton, titleText, explanationText);
+
+        // 버튼이 Raycast를 받을 수 있게 설정
+        button.GetComponent<Image>().raycastTarget = true;
+    }
+
     private void OnDestroy()
     {
         if (Instance == this)
