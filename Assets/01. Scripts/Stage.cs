@@ -9,11 +9,17 @@ using UnityEngine.UI;
 // # Project 
 using DG.Tweening;
 using TMPro;
+using UnityEngine.Rendering.LookDev;
 
 public class Stage : MonoBehaviour
 {
     [SerializeField]
     private string              sceneName;
+    [SerializeField]
+    private string              stageName;
+    [SerializeField]
+    private bool                isClear;
+
     [SerializeField]
     private StageInfo           stageInfo;
 
@@ -35,6 +41,10 @@ public class Stage : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI     explanationText;
 
+    public StageInfo            StageInfo { get => stageInfo; }
+    public string               StageName { get => stageName; }
+    public bool                 IsClaer { get => isClear;  }
+
     private void Start()
     {
         Initialize();
@@ -47,6 +57,17 @@ public class Stage : MonoBehaviour
 
         stageInfoHideButton.onClick.AddListener(() =>
             OnHideStageInfoUI());
+
+        sceneName = stageInfo.sceneName;
+        stageName = stageInfo.stageName;
+    }
+
+    private void InitializeInfo()
+    {
+        sceneName = stageInfo.sceneName;
+        stageName = stageInfo.stageName;
+
+        GameManager.Instance.SetStageName(stageName);
     }
 
     private void InitializeInfoUI()
@@ -58,10 +79,13 @@ public class Stage : MonoBehaviour
 
     private void OnShowStageInfoUI()
     {
+        InitializeInfo();
+        InitializeInfoUI();
+
+        stageEntryButton.onClick.RemoveAllListeners();
+
         stageEntryButton.onClick.AddListener(() =>
             ScenesManager.Instance.LoadScene(sceneName));
-
-        InitializeInfoUI();
 
         Sequence mySequence = DOTween.Sequence();
 
@@ -89,5 +113,20 @@ public class Stage : MonoBehaviour
         mySequence.Append(tr2);
 
         mySequence.Play();
+    }
+
+    public void StageClear()
+    {
+        isClear = true;
+    }
+
+    public void SetStageInfo(StageInfo stageInfo)
+    {
+        this.stageInfo = stageInfo;
+    }
+
+    public void StageReset()
+    {
+        isClear = false;
     }
 }

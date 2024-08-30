@@ -11,6 +11,7 @@ public class StageInfo : ScriptableObject
 {
     [Header("Stage Settings")]
     public string   sceneName;
+    public string   stageName;
 
     [Header("Stage UI Settings")]
     public string   titleName;
