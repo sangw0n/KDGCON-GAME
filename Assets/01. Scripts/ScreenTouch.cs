@@ -40,6 +40,8 @@ public class ScreenTouch : MonoBehaviour
             Ray ray              = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit     = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
 
+            if (hit.collider == null) return;
+
             if (!isZooming && !isZoomIn && hit.collider.CompareTag("Screen"))
             {
                 isZooming = true;
