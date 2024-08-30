@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject bubbleptc;
     [SerializeField] private GameObject hitptc;
     [SerializeField] public GameObject oilPanel;
+    [SerializeField] public GameObject damagePanel;
 
 
     [SerializeField] Slider hpBar;
@@ -167,10 +168,21 @@ public class Player : MonoBehaviour
     public void TakeDamage(float damage)
     {
         curHp -= damage;
+        CameraShake.instance.Shake(0.4f, 0.07f);
+        StartCoroutine(DamagePanel());
+
     }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(pos.position, boxSize);
+    }
+
+    IEnumerator DamagePanel()
+    {
+        damagePanel.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        damagePanel.SetActive(false);
+
     }
 }
