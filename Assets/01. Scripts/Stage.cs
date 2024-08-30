@@ -84,6 +84,8 @@ public class Stage : MonoBehaviour
         InitializeInfo();
         InitializeInfoUI();
 
+        ScreenTouch.Instance.isOpenUI = true;
+
         stageEntryButton.onClick.RemoveAllListeners();
 
         stageEntryButton.onClick.AddListener(() =>
@@ -104,6 +106,8 @@ public class Stage : MonoBehaviour
 
     private void OnHideStageInfoUI()
     {
+        ScreenTouch.Instance.isOpenUI = false;
+
         Sequence mySequence = DOTween.Sequence();
 
         Tween tr0 = stageInfoUi.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.25f);

@@ -10,6 +10,10 @@ using DG.Tweening;
 
 public class ScreenTouch : MonoBehaviour
 {
+    public static ScreenTouch Instance { get; private set; }
+
+    public bool isOpenUI;
+
     [Header("Zoom Settings")]
     [SerializeField]
     private float       zoomViewSize;
@@ -24,6 +28,8 @@ public class ScreenTouch : MonoBehaviour
 
     private void Awake()
     {
+        Instance =  this;
+
         defaultCameraPosition = Camera.main.transform.position;
         defaultCameraViewSize = Camera.main.orthographicSize;
 
@@ -49,7 +55,7 @@ public class ScreenTouch : MonoBehaviour
 
                 ZoomInScreen(hit.transform);
             }
-            else if (!isZooming && isZoomIn && (hit.collider == null || hit.collider.CompareTag("Finish")))
+            else if (!isZooming && isZoomIn && !isOpenUI && (hit.collider == null || hit.collider.CompareTag("Finish")))
             {
                 isZooming = true;
                 isZoomIn = !isZoomIn;
