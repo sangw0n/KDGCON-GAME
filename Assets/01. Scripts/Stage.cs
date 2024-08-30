@@ -91,7 +91,7 @@ public class Stage : MonoBehaviour
 
         Sequence mySequence = DOTween.Sequence();
 
-        Tween tr0 = stageInfoUi.rectTransform.DOAnchorPosX(-50, 0.5f).SetEase(Ease.OutQuad);
+        Tween tr0 = stageInfoUi.rectTransform.DOAnchorPosX(-40, 0.5f).SetEase(Ease.OutQuad);
         Tween tr1 = stageInfoUi.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.25f);
         Tween tr2 = stageInfoUi.transform.DOScale(new Vector3(1.0f, 1.0f, 1.0f), 0.1f);
 

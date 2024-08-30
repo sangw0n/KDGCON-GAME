@@ -61,12 +61,27 @@ public class ScreenTouch : MonoBehaviour
 
     private void ZoomInScreen(Transform detectedScreen)
     {
-        Vector3 zoomPosition = new Vector3
+        Vector3 zoomPosition;
+
+        if (detectedScreen.gameObject.name == "Main Screen")
+        {
+            zoomPosition = new Vector3
         (
-            detectedScreen.position.x, 
-            detectedScreen.position.y, 
+            detectedScreen.position.x + 2,
+            detectedScreen.position.y,
             Camera.main.transform.position.z
         );
+        }
+        else
+        {
+            zoomPosition = new Vector3
+        (
+            detectedScreen.position.x,
+            detectedScreen.position.y,
+            Camera.main.transform.position.z
+        );
+        }
+
 
         Sequence sequence = DOTween.Sequence();
 
