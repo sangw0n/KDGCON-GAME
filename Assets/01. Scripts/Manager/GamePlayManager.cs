@@ -9,6 +9,9 @@ public class GamePlayManager : MonoBehaviour
     public static GamePlayManager Instance { get; private set; }
 
     [SerializeField] GameObject clearPanel;
+    [SerializeField] GameObject Fadein;
+
+
 
     public  List<Monster> monsterList = new List<Monster>();
 
@@ -46,9 +49,8 @@ public class GamePlayManager : MonoBehaviour
     IEnumerator ClearCor()
     {
         yield return new WaitForSeconds(2);
-        FadeInOut.instance.gameObject.SetActive(true);
-        FadeInOut.instance.StartCoroutine(FadeInOut.instance.FadeIn());
+        Fadein.SetActive(true);
         yield return new WaitForSeconds(1);
-        SceneManager.LoadScene("02.Battle Base");
+        SceneManager.LoadScene("02. Battle Base");
     }
 }
