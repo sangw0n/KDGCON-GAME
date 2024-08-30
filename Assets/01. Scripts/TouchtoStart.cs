@@ -9,6 +9,7 @@ public class TouchtoStart : MonoBehaviour
     public LoopType loopType;
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private GameObject titleObj;
+    [SerializeField] string sceneName;
     private CanvasGroup titleCanvasGroup; // 추가: titleObj의 CanvasGroup을 위한 변수
     Sequence mySequence;
 
@@ -68,7 +69,7 @@ public class TouchtoStart : MonoBehaviour
             FadeInOut.instance.gameObject.SetActive(true);
             FadeInOut.instance.StartCoroutine(FadeInOut.instance.FadeIn());
             yield return new WaitForSeconds(1);
-            SceneManager.LoadScene("01. MainMenu");
+            SceneManager.LoadScene(sceneName);
         }
     }
 }

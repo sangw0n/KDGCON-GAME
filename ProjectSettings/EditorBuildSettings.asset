@@ -17,4 +17,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Forest.unity
     guid: 2ecc55bf496e86242b6e85827116e549
+  - enabled: 1
+    path: Assets/Scenes/Beach.unity
+    guid: ca188732ef163f544aa83d3f17485f8f
+  - enabled: 1
+    path: Assets/Scenes/Beach2.unity
+    guid: b0e169306e648384d9e34af6411f3fa8
+  - enabled: 1
+    path: Assets/Scenes/City.unity
+    guid: 6211d870567d95a48aedad4b5a021fe8
+  - enabled: 1
+    path: Assets/Scenes/City2.unity
+    guid: dfcd8d1b04ddf0c4fb075c5a27a9fbb5
+  - enabled: 1
+    path: Assets/Scenes/Forest2.unity
+    guid: f48c43d2899c63a428c52dfa25375e6a
   m_configObjects: {}
