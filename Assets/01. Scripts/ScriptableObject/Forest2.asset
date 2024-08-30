@@ -15,6 +15,6 @@ MonoBehaviour:
   sceneName: Forest2
   stageName: Forest2
   titleName: "\uC232"
-  stageImage: {fileID: 21300000, guid: 262bd0fb0671df84ebf762c3235c7a67, type: 3}
+  stageImage: {fileID: 21300000, guid: 376a6f8c601602f4eaad296849b092cc, type: 3}
   explanation: "\uBA54\uD0C4\uAC00\uC2A4 \uBAAC\uC2A4\uD130\uB4E4\uC774 \uD658\uACBD\uC744
     \uC624\uC5FC \uC2DC\uD0A4\uACE0 \uC788\uC2B5\uB2C8\uB2E4."

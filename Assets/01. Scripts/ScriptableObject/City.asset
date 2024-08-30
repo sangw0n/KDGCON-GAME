@@ -15,7 +15,7 @@ MonoBehaviour:
   sceneName: City
   stageName: "\uB3C4\uC2DC"
   titleName: "\uB3C4\uC2DC"
-  stageImage: {fileID: 21300000, guid: e67e6f3ced8de1540948cf9e1f5319fb, type: 3}
+  stageImage: {fileID: 21300000, guid: f2a5f7b0e428c9d4f857d22c5edfa524, type: 3}
   explanation: "\uC624\uC5FC\uB41C \uACF5\uAE30\uB4E4\uC774 \uC2A4\uBAA8\uADF8\uC640
     \uC624\uC5FC\uB41C \uACF5\uAE30\uB85C \uD658\uACBD\uC744 \uC624\uC5FC\uC2DC\uD0A4\uACE0
     \uC788\uC2B5\uB2C8\uB2E4"

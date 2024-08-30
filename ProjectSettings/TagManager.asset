@@ -9,6 +9,7 @@ TagManager:
   - Temperature
   - OilBullet
   - MethaneBullet
+  - ClearPanel
   layers:
   - Default
   - TransparentFX

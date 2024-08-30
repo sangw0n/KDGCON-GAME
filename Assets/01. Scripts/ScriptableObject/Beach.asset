@@ -15,7 +15,7 @@ MonoBehaviour:
   sceneName: Beach
   stageName: "\uD574\uBCC0\uAC00"
   titleName: "\uD574\uBCC0\uAC00"
-  stageImage: {fileID: 21300000, guid: e67e6f3ced8de1540948cf9e1f5319fb, type: 3}
+  stageImage: {fileID: 21300000, guid: 0728b88238b7f5f48bb698d70691a1e6, type: 3}
   explanation: "\uC624\uC77C \uB4DC\uB7FC\uD1B5\uB4E4\uC774  \uC11D\uC720 \uC720\uCD9C\uC744
     \uC77C\uC73C\uD0A4\uBA70, \uBC14\uB2E4\uC640 \uD574\uC591 \uC0DD\uD0DC\uACC4\uB97C
     \uC624\uC5FC\uC2DC\uD0A4\uACE0 \uC788\uC2B5\uB2C8\uB2E4"
