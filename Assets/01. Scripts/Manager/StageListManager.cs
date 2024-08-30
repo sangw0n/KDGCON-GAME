@@ -33,6 +33,8 @@ public class StageListManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI explanationText;
 
+    private bool isGameStart;
+
     public void Awake()
     {
         Instance = this;
@@ -43,6 +45,10 @@ public class StageListManager : MonoBehaviour
 
     private void Start()
     {
+        if (isGameStart) return;
+
+        isGameStart = true;
+
         GameObject randomButton = this.button[Random.Range(0, 3)];
         Transform pos = spawnPos[Random.Range(0, 3)].transform;
 
