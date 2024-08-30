@@ -41,6 +41,8 @@ public class Stage : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI     explanationText;
 
+    public StageInfo            StageInfo { get => stageInfo; }
+    public string               StageName { get => stageName; }
     public bool                 IsClaer { get => isClear;  }
 
     private void Start()
@@ -55,6 +57,9 @@ public class Stage : MonoBehaviour
 
         stageInfoHideButton.onClick.AddListener(() =>
             OnHideStageInfoUI());
+
+        sceneName = stageInfo.sceneName;
+        stageName = stageInfo.stageName;
     }
 
     private void InitializeInfo()
@@ -74,11 +79,13 @@ public class Stage : MonoBehaviour
 
     private void OnShowStageInfoUI()
     {
-        //stageEntryButton.onClick.AddListener(() =>
-        //    ScenesManager.Instance.LoadScene(sceneName));
-
         InitializeInfo();
         InitializeInfoUI();
+
+        stageEntryButton.onClick.RemoveAllListeners();
+
+        stageEntryButton.onClick.AddListener(() =>
+            ScenesManager.Instance.LoadScene(sceneName));
 
         Sequence mySequence = DOTween.Sequence();
 

@@ -31,16 +31,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        SetRandomStageIndex();
-    }
-
-    private void OnEnable()
-    {
-        if(SceneManager.GetActiveScene().name == "02. Battle Base")
-        {
-            stages = StageListManager.Instance.GetStageList();
-        }
     }
 
     public void SetStageName(string stageName)
@@ -48,18 +38,7 @@ public class GameManager : MonoBehaviour
         this.currentStageName = stageName;
     }
 
-    [ContextMenu("SetRandomStageIndex")]
-    public void SetRandomStageIndex()
-    {
-        stageIndexs = new int[Constants.maxStageCount];
-
-        for(int i = 0; i < stageIndexs.Length; i++)
-        {
-            stageIndexs[i] = Random.Range(0, StageListManager.Instance.StageInfoData.Length);
-        }
-    }
-
-    public void GameClear(bool isClear)
+    public void ClearGame(bool isClear)
     {
         isGameClear = isClear;
     }

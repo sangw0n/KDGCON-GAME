@@ -198,6 +198,11 @@ public class Monster : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.2f);
         Time.timeScale = 1;
         dieVolume.SetActive(false);
+    }
 
+    private void OnDestroy()
+    {
+        GamePlayManager.Instance.monsterList.Remove(this);
+        GamePlayManager.Instance.UpdateGameState();
     }
 }
