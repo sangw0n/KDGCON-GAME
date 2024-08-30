@@ -9,11 +9,17 @@ using UnityEngine.UI;
 // # Project 
 using DG.Tweening;
 using TMPro;
+using UnityEngine.Rendering.LookDev;
 
 public class Stage : MonoBehaviour
 {
     [SerializeField]
     private string              sceneName;
+    [SerializeField]
+    private string              stageName;
+    [SerializeField]
+    private bool                isClear;
+
     [SerializeField]
     private StageInfo           stageInfo;
 
@@ -35,6 +41,8 @@ public class Stage : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI     explanationText;
 
+    public bool                 IsClaer { get => isClear;  }
+
     private void Start()
     {
         Initialize();
@@ -49,6 +57,14 @@ public class Stage : MonoBehaviour
             OnHideStageInfoUI());
     }
 
+    private void InitializeInfo()
+    {
+        sceneName = stageInfo.sceneName;
+        stageName = stageInfo.stageName;
+
+        GameManager.Instance.SetStageName(stageName);
+    }
+
     private void InitializeInfoUI()
     {
         stageImage.sprite    = stageInfo.stageImage;
@@ -58,9 +74,10 @@ public class Stage : MonoBehaviour
 
     private void OnShowStageInfoUI()
     {
-        stageEntryButton.onClick.AddListener(() =>
-            ScenesManager.Instance.LoadScene(sceneName));
+        //stageEntryButton.onClick.AddListener(() =>
+        //    ScenesManager.Instance.LoadScene(sceneName));
 
+        InitializeInfo();
         InitializeInfoUI();
 
         Sequence mySequence = DOTween.Sequence();
@@ -89,5 +106,20 @@ public class Stage : MonoBehaviour
         mySequence.Append(tr2);
 
         mySequence.Play();
+    }
+
+    public void StageClear()
+    {
+        isClear = true;
+    }
+
+    public void SetStageInfo(StageInfo stageInfo)
+    {
+        this.stageInfo = stageInfo;
+    }
+
+    public void StageReset()
+    {
+        isClear = false;
     }
 }
